@@ -32,9 +32,11 @@ Before setting up this configuration, ensure you have the following installed:
 1. **Clone this Repository**:
 
    ```bash
-   git clone https://github.com/your-username/your-repo.git ~/.config/nvim
+   git clone https://github.com/dastanaron/nvim-config.git ~/.config/nvim
    ```
-2. **Install plugins**
+2. **Run Nvim**
+
+3. **Install plugins**
 
 Plugins will be installed automatically after launching NVIM, but if this does not happen, enter `:Lazy`
 
