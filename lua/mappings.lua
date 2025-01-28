@@ -22,4 +22,5 @@ end, { desc = "terminal toggle floating term" })
 map('n', '<leader>gb', function() 
   require("gitsigns").blame_line{full=true}
 end, { desc = "git blame"})
+map("n", "<leader>pb", "<cmd>ToggleBufferPanel<CR>", {desc = "Toggle buffer panel"})
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <crjk>")
