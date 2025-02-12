@@ -16,7 +16,9 @@ This repository contains a customized NeoVim configuration built on top of [NvCh
   - Integration with LSP for Golang.
   - Debugging support for Golang projects.
 - **Custom Keybindings**: Additional keybindings for common tasks in Typescript and Golang development.
+- **Custom Buffer Panel**: If you have many tabs with buffers press <leader>pb
 - **Plugins**: Includes a curated list of plugins to enhance productivity and functionality.
+- **DAP**: Installed and configured dap for debugging nodejs in docker
 
 ## Prerequisites
 
@@ -45,6 +47,8 @@ Plugins will be installed automatically after launching NVIM, but if this does n
   - `<leader>lf`: Open floating diagnostic.
   - `<A-i>`: Terminal toggle floating tert.
   - `<leader>gb`: Git blame.
+
+[...more](./lua/mappings.lua)
 
 ## License
 
