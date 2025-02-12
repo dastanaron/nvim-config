@@ -19,8 +19,20 @@ map({ "n", "t" }, "<A-i>", function()
   require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
 end, { desc = "terminal toggle floating term" })
 
-map('n', '<leader>gb', function() 
+map('n', '<leader>gb', function()
   require("gitsigns").blame_line{full=true}
 end, { desc = "git blame"})
+
 map("n", "<leader>pb", "<cmd>ToggleBufferPanel<CR>", {desc = "Toggle buffer panel"})
--- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <crjk>")
+
+map('n', '<leader>lhs', function()
+  vim.cmd('%!xxd')
+end, {desc = "hex show" })
+
+map('n', '<leader>lhr', function()
+  vim.cmd('%!xxd -r')
+end, {desc = "hex show" })
+
+map("n", "<leader>do", "<cmd>lua require('dapui').toggle()<CR>", {desc = "debug toggle ui"})
+map("n", "<leader>db", "<cmd>lua require('dap').toggle_breakpoint()<CR>", {desc = "debug toggle breakpoint"})
+map("n", "<leader>dr", "<cmd>lua require('dap').continue()<CR>", {desc = "debug run/continue"});

@@ -25,7 +25,21 @@ return {
     end,
     ft = { "markdown" },
   },
-
+  {
+    "neoclide/coc.nvim",
+    event = "VeryLazy",
+  },
+  { "rcarriga/nvim-dap-ui",
+    event = 'VeryLazy',
+    init = function()
+      require("dapui").setup()
+      require('configs.dap')
+    end,
+    dependencies = {
+      "mfussenegger/nvim-dap",
+      "nvim-neotest/nvim-nio"
+    }
+  },
   -- {
   -- 	"nvim-treesitter/nvim-treesitter",
   -- 	opts = {

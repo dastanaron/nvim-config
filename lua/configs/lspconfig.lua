@@ -25,6 +25,24 @@ lspconfig.eslint.setup({
   end,
 })
 
+lspconfig.stylelint_lsp.setup({
+  filetypes = { "css", "scss" },
+  root_dir = lspconfig.util.root_pattern("package.json", ".git"),
+  settings = {
+    stylelintplus = {
+      -- see available options in stylelint-lsp documentation
+    },
+  },
+  on_attach = function(_, buffer)
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = buffer,
+      callback = function()
+        vim.lsp.buf.format()
+      end,
+    })
+  end,
+})
+
 local util = require "lspconfig/util"
 lspconfig.gopls.setup{
   on_attach = function(client, bufnr)

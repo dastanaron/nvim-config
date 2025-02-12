@@ -32,8 +32,9 @@ dofile(vim.g.base46_cache .. "statusline")
 require "options"
 require "nvchad.autocmds"
 
-require('user.plugins.buffer_panel').setup()
-
 vim.schedule(function()
   require "mappings"
 end)
+
+require("user.plugins.custom.functions")
+require('user.plugins.buffer_panel').setup()

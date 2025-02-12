@@ -1,0 +1,6 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": [
+    "prisma"
+  ],
+  "suggest.autoTrigger": "none"
+}
