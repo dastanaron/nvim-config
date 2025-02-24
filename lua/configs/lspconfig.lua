@@ -68,8 +68,9 @@ lspconfig.gopls.setup{
         vim.lsp.buf.format({async = false})
       end
     })
+    nvlsp.on_attach(client, bufnr)
   end,
-  capabilities = capabilities,
+  capabilities = nvlsp.capabilities,
   cmd = { 'gopls', 'serve' },
   filetypes = { 'go', 'go.mod' },
   root_dir = util.root_pattern('go.mod'),
