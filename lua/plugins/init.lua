@@ -49,14 +49,12 @@ return {
       "mfussenegger/nvim-dap",
     },
     opts = {},
+  },
+  {
+    'Kicamon/markdown-table-mode.nvim',
+    event = 'VeryLazy',
+    config = function()
+      require('markdown-table-mode').setup()
+    end
   }
-  -- {
-  -- 	"nvim-treesitter/nvim-treesitter",
-  -- 	opts = {
-  -- 		ensure_installed = {
-  -- 			"vim", "lua", "vimdoc",
-  --      "html", "css"
-  -- 		},
-  -- 	},
-  -- },
 }
