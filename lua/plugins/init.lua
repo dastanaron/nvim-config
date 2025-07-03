@@ -71,10 +71,14 @@ return {
           'nvim-treesitter/nvim-treesitter'
       },
       config = function()
-          require('prisma').setup()
+        local nvlsp = require "nvchad.configs.lspconfig"
+        require('prisma').setup({
+        lsp = {
+          on_attach = nvlsp.on_attach,
+          capabilities = nvlsp.capabilities,
+          on_init = nvlsp.on_init,
+        }
+      })
       end,
-      opts = {
-          -- default configuration
-      }
   }
 }
