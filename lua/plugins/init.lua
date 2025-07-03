@@ -22,12 +22,11 @@ return {
     build = "cd app && yarn install",
     init = function()
       vim.g.mkdp_filetypes = { "markdown" }
+      vim.g.mkdp_preview_options = {
+        uml = { server = "http://localhost:8080" },
+      }
     end,
     ft = { "markdown" },
-  },
-  {
-    "neoclide/coc.nvim",
-    event = "VeryLazy",
   },
   { "rcarriga/nvim-dap-ui",
     event = 'VeryLazy',
@@ -49,14 +48,33 @@ return {
       "mfussenegger/nvim-dap",
     },
     opts = {},
+  },
+  {
+    "supermaven-inc/supermaven-nvim",
+    event = "VeryLazy",
+    config = function()
+      require("supermaven-nvim").setup({
+        keymaps = {
+          accept_suggestion = "<C-j>",
+          clear_suggestion = "<C-c>",
+          accept_word = "<C-w>",
+        },
+      })
+      end,
+  },
+  {
+      'dastanaron/prisma.nvim',
+      event = "VeryLazy",
+      dependencies = {
+          'williamboman/mason.nvim',
+          'neovim/nvim-lspconfig',
+          'nvim-treesitter/nvim-treesitter'
+      },
+      config = function()
+          require('prisma').setup()
+      end,
+      opts = {
+          -- default configuration
+      }
   }
-  -- {
-  -- 	"nvim-treesitter/nvim-treesitter",
-  -- 	opts = {
-  -- 		ensure_installed = {
-  -- 			"vim", "lua", "vimdoc",
-  --      "html", "css"
-  -- 		},
-  -- 	},
-  -- },
 }
