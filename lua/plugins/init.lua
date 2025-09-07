@@ -33,10 +33,12 @@ return {
     init = function()
       require("dapui").setup()
       require('configs.dap')
+      require("dap-go").setup()
     end,
     dependencies = {
       "mfussenegger/nvim-dap",
-      "nvim-neotest/nvim-nio"
+      "nvim-neotest/nvim-nio",
+      "leoluz/nvim-dap-go",
     }
   },
   {
@@ -49,18 +51,45 @@ return {
     },
     opts = {},
   },
+  -- {
+  --   "supermaven-inc/supermaven-nvim",
+  --   event = "VeryLazy",
+  --   config = function()
+  --     require("supermaven-nvim").setup({
+  --       keymaps = {
+  --         accept_suggestion = "<C-j>",
+  --         clear_suggestion = "<C-c>",
+  --         accept_word = "<C-w>",
+  --       },
+  --     })
+  --     end,
+  -- },
   {
-    "supermaven-inc/supermaven-nvim",
+    "robitx/gp.nvim",
     event = "VeryLazy",
     config = function()
-      require("supermaven-nvim").setup({
-        keymaps = {
-          accept_suggestion = "<C-j>",
-          clear_suggestion = "<C-c>",
-          accept_word = "<C-w>",
-        },
-      })
-      end,
+        local conf = {
+          providers = {
+            openai = {
+              endpoint = "http://localhost:1234/v1/chat/completions",
+              secret = "1234",
+            }
+          },
+        	agents = {
+            {
+              name = "qwen3coder",
+              provider = "openai",
+              chat = true,
+              command = true,
+              model = { model = "qwen/qwen3-coder-30b" },
+              system_prompt = "I am an AI meticulously crafted to provide programming guidance and code assistance. "
+              .. "To best serve you as a computer programmer, please provide detailed inquiries and code snippets when necessary, "
+              .. "and expect precise, technical responses tailored to your development needs.\n",
+            },
+          },
+        }
+        require("gp").setup(conf)
+    end,
   },
   {
       'dastanaron/prisma.nvim',
@@ -80,5 +109,5 @@ return {
         }
       })
       end,
-  }
+  },
 }
