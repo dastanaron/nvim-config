@@ -77,6 +77,16 @@ return {
           },
         	agents = {
             {
+              name = "qwen3-4b",
+              provider = "openai",
+              chat = true,
+              command = true,
+              model = { model = "qwen/qwen3-4b-2507" },
+              system_prompt = "I am an AI meticulously crafted to provide programming guidance and code assistance. "
+              .. "To best serve you as a computer programmer, please provide detailed inquiries and code snippets when necessary, "
+              .. "and expect precise, technical responses tailored to your development needs.\n",
+            },
+            {
               name = "qwen3coder",
               provider = "openai",
               chat = true,
