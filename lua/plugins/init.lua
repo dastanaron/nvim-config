@@ -33,7 +33,20 @@ return {
     init = function()
       require("dapui").setup()
       require('configs.dap')
-      require("dap-go").setup()
+      require("dap-go").setup(
+        {
+          dap_configurations = {
+            {
+              type = "go",
+              name = "Attach remote",
+              mode = "remote",
+              request = "attach",
+              port = 38697,
+              host = "127.0.0.1",
+            },
+          },
+        }
+      )
     end,
     dependencies = {
       "mfussenegger/nvim-dap",
@@ -51,19 +64,19 @@ return {
     },
     opts = {},
   },
-  -- {
-  --   "supermaven-inc/supermaven-nvim",
-  --   event = "VeryLazy",
-  --   config = function()
-  --     require("supermaven-nvim").setup({
-  --       keymaps = {
-  --         accept_suggestion = "<C-j>",
-  --         clear_suggestion = "<C-c>",
-  --         accept_word = "<C-w>",
-  --       },
-  --     })
-  --     end,
-  -- },
+  {
+    "supermaven-inc/supermaven-nvim",
+    event = "VeryLazy",
+    config = function()
+      require("supermaven-nvim").setup({
+        keymaps = {
+          accept_suggestion = "<C-j>",
+          clear_suggestion = "<C-c>",
+          accept_word = "<C-w>",
+        },
+      })
+      end,
+  },
   {
     "robitx/gp.nvim",
     event = "VeryLazy",
