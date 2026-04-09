@@ -38,3 +38,8 @@ end)
 
 require("user.plugins.custom.functions")
 require('user.plugins.buffer_panel').setup()
+
+vim.opt.keymap = "russian-jcukenwin"
+
+vim.opt.iminsert = 0
+vim.opt.imsearch = 0
