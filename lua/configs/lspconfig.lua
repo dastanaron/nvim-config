@@ -84,3 +84,13 @@ lspconfig.gopls.setup{
     }
   }
 }
+
+vim.g.rustaceanvim = {
+  server = {
+    on_attach = function(client, bufnr)
+      require("nvchad.configs.lspconfig").on_attach(client, bufnr)
+      
+    end,
+    capabilities = require("nvchad.configs.lspconfig").capabilities,
+  },
+}

@@ -169,5 +169,13 @@ return {
     config = function()
       require('markdown-table-mode').setup()
     end
-  }
+  },
+  {
+    "mrcjkb/rustaceanvim",
+    version = "^5", -- Рекомендуется использовать последнюю мажорную версию
+    lazy = false,    -- Плагин сам определит, когда запуститься (по типу файла)
+    config = function()
+      -- Здесь можно добавить специфичные настройки, если нужно
+    end,
+  },
 }
