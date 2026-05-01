@@ -89,7 +89,12 @@ vim.g.rustaceanvim = {
   server = {
     on_attach = function(client, bufnr)
       require("nvchad.configs.lspconfig").on_attach(client, bufnr)
-      
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        pattern = "*.rs",
+        callback = function()
+          vim.lsp.buf.format({ async = false })
+        end,
+      })
     end,
     capabilities = require("nvchad.configs.lspconfig").capabilities,
   },
