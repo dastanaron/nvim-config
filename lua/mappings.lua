@@ -36,3 +36,12 @@ end, {desc = "hex show" })
 map("n", "<leader>do", "<cmd>lua require('dapui').toggle()<CR>", {desc = "debug toggle ui"})
 map("n", "<leader>db", "<cmd>lua require('dap').toggle_breakpoint()<CR>", {desc = "debug toggle breakpoint"})
 map("n", "<leader>dr", "<cmd>lua require('dap').continue()<CR>", {desc = "debug run/continue"});
+
+--toggle fulscreen terminal
+map('n', '<A-t>', function()
+  require("user.plugins.custom.term").toggle()
+end, {
+    noremap = true,
+    silent = true,
+    desc = 'Toggle terminal'
+});

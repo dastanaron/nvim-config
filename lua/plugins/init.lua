@@ -33,7 +33,20 @@ return {
     init = function()
       require("dapui").setup()
       require('configs.dap')
-      require("dap-go").setup()
+      require("dap-go").setup(
+        {
+          dap_configurations = {
+            {
+              type = "go",
+              name = "Attach remote",
+              mode = "remote",
+              request = "attach",
+              port = 38697,
+              host = "127.0.0.1",
+            },
+          },
+        }
+      )
     end,
     dependencies = {
       "mfussenegger/nvim-dap",
@@ -51,19 +64,19 @@ return {
     },
     opts = {},
   },
-  -- {
-  --   "supermaven-inc/supermaven-nvim",
-  --   event = "VeryLazy",
-  --   config = function()
-  --     require("supermaven-nvim").setup({
-  --       keymaps = {
-  --         accept_suggestion = "<C-j>",
-  --         clear_suggestion = "<C-c>",
-  --         accept_word = "<C-w>",
-  --       },
-  --     })
-  --     end,
-  -- },
+  {
+    "supermaven-inc/supermaven-nvim",
+    event = "VeryLazy",
+    config = function()
+      require("supermaven-nvim").setup({
+        keymaps = {
+          accept_suggestion = "<C-j>",
+          clear_suggestion = "<C-c>",
+          accept_word = "<C-w>",
+        },
+      })
+      end,
+  },
   {
     "robitx/gp.nvim",
     event = "VeryLazy",
@@ -76,6 +89,16 @@ return {
             }
           },
         	agents = {
+            {
+              name = "qwen3-4b",
+              provider = "openai",
+              chat = true,
+              command = true,
+              model = { model = "qwen/qwen3-4b-2507" },
+              system_prompt = "I am an AI meticulously crafted to provide programming guidance and code assistance. "
+              .. "To best serve you as a computer programmer, please provide detailed inquiries and code snippets when necessary, "
+              .. "and expect precise, technical responses tailored to your development needs.\n",
+            },
             {
               name = "qwen3coder",
               provider = "openai",
@@ -109,5 +132,12 @@ return {
         }
       })
       end,
+  },
+  {
+    "mrcjkb/rustaceanvim",
+    version = "^5",
+    lazy = false,
+    config = function()
+    end,
   },
 }
