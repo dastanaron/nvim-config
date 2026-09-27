@@ -38,7 +38,7 @@ map("n", "<leader>db", "<cmd>lua require('dap').toggle_breakpoint()<CR>", {desc 
 map("n", "<leader>dr", "<cmd>lua require('dap').continue()<CR>", {desc = "debug run/continue"});
 
 --toggle fulscreen terminal
-map('n', '<A-t>', function()
+map({'n', 't'}, '<A-t>', function()
   require("user.plugins.custom.term").toggle()
 end, {
     noremap = true,
